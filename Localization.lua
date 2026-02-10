@@ -105,6 +105,18 @@ local localizedAddonDisplayStrings = {
 		zhCN = "删除请求",
 		zhTW = "刪除要求",
 	},
+	TOT_BOSSES = {
+		enUS = "TOT Bosses (Lei Shen/Ra-den)",
+		ruRU = "ПГ Боссы (Лей Шень/Ра-ден)",
+	},
+	CboxFlashClient = {
+		enUS = "Flash client on new request",
+		ruRU = "Мигать окном при новом запросе",
+	},
+	CboxFilterGB = {
+		enUS = "Filter out Gold Bid (GB) raids",
+		ruRU = "Скрывать ГБ (Gold Bid) рейды",
+	},
 	IGNORE_ITEM_LINKS = {
 		enUS = "Ignore Item Links",
 		deDE = "Gegenstandslinks ignorieren",
