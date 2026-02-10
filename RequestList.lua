@@ -245,12 +245,22 @@ local function getRequestMessageCategories(msg, sender, fromLFGChannel)
 		end
 	else
 		local wordList = getFuzzyNormalizedWords(msg)
+		local isGB = false
+		local clientLocale = GetLocale()
+		if clientLocale == "enUS" then clientLocale = "enGB" end
+
 		for _, word in ipairs(wordList) do
 			if word == "run" or word == "runs" then hasRunTag = true end
 
 			local categoryTagKey = GBB.tagList[word]
 
 			if GBB.HeroicKeywords[word] ~= nil then hasHeroicTag = true end
+
+			if GBB.GBTagsLoc[clientLocale] then
+				for _, gbTag in ipairs(GBB.GBTagsLoc[clientLocale]) do
+					if word == gbTag then isGB = true end
+				end
+			end
 
 			if categoryTagKey == nil then
 				if GBB.tagList[word.."run"] ~= nil then
@@ -277,6 +287,9 @@ local function getRequestMessageCategories(msg, sender, fromLFGChannel)
 				end
 				dungeons[categoryTagKey] = not skip
 			end
+		end
+		if isGB and GBB.DB.FilterGB then
+			return {}, false, false
 		end
 	end
 
@@ -376,7 +389,12 @@ local function getRequestMessageCategories(msg, sender, fromLFGChannel)
 		end
 		-- build the list of valid categories
 		for categoryKey, include in pairs(dungeons) do
-			if include == true then table.insert(validCategories, categoryKey) end
+			if include == true then
+				if categoryKey == "TOT_BOSSES" and not isHeroic then
+					include = false
+				end
+				if include == true then table.insert(validCategories, categoryKey) end
+			end
 		end
 		-- check for custom categories which are set to be isolated/exclusive
 		for _, key in ipairs(validCategories) do
@@ -533,6 +551,9 @@ local function parseMessageForRequestList(msg, sender, senderGUID, channel)
 		end
 		if GBB.DB.NotifySound then
 			PlaySound(GBB.NotifySound, GBB.DB.NotifySoundChannel)
+		end
+		if GBB.DB.FlashClient then
+			FlashClientIcon()
 		end
 	end
 

@@ -43,7 +43,7 @@ local searchTags = {
 
 	deDE = "gesucht suche suchen sucht such gruppe grp sfg sfm druide dudu jäger magier priester warri schurke rschami schamane hexer hexenmeister hm krieger heiler xheiler go run",
 
-	ruRU = "лфг ищет ищу нид нужны лфм лф2м ищем пати похилю лф танк хил нужен дд рдд мдд ршам рога вар прист армс пал",
+	ruRU = "лфг ищет ищу нид нужны лфм лф2м ищем пати похилю лф танк хил нужен дд рдд мдд ршам рога вар прист армс пал монах монк тт хмелевар вв монка",
 	frFR = "groupe cherche chasseur druide mage paladin pretre voleur chaman quete",
 
 	zhTW = "缺 來 找 徵 坦 補 DD 輸出 戰 聖 薩 獵 德 賊 法 牧 術",
@@ -944,37 +944,52 @@ local dungeonTags = {
 	-- Mists of Pandaria specific dungeons/raids
 	MSV = { -- "Mogu'shan Vaults"
 		enGB = "mgsv msv vaults elegon",
+		ruRU = "пмш подземелья могушан могу'шан элегон",
     },
     NIUZAO_TEMPLE = { -- "Siege of Niuzao Temple"
 		enGB = "niu niuzao temple nt",
+		ruRU = "ниудзао храм ниудзао",
     },
     SETTING_SUN = { -- "Gate of the Setting Sun"
 		enGB = "goss gate",
+		ruRU = "врата заходящего солнца взс",
     },
 	SCARLET_HALLS = { -- "Scarlet Halls"
 		enGB = "scarlet halls sh",
+		ruRU = "залы алого ордена зао",
     },
     TOT = { -- "Throne of Thunder"
 		enGB = "tot tot10 tot25 thunder",
+		ruRU = "пг престол гроз",
     },
     MSP = { -- "Mogu'shan Palace"
 		enGB = "mogu palace msp",
+		ruRU = "дворец могушан дворец могу'шан",
     },
     TOTJS = { -- "Temple of the Jade Serpent"
 		enGB = "jade serpent totjs",
+		ruRU = "храм нефритовой змеи хнз",
     },
     SPM = { -- "Shado-Pan Monastery"
 		enGB = "shadopan monastery spm",
+		ruRU = "монастырь шадо-пан мшп",
     },
     BREWERY = { -- "Stormstout Brewery"
 		enGB = "brewery stormstout sb brew",
+		ruRU = "хмелеварня буйных портеров хбп",
     },
     TERRACE = { -- "Terrace of Endless Spring"
 		enGB = "terrace tes toes",
+		ruRU = "терраса вечной весны твв",
     },
     HEART_OF_FEAR = { -- "Heart of Fear"
 		enGB = "heart hof",
+		ruRU = "сердце страха сс",
     },
+	TOT_BOSSES = {
+		enGB = "lei ra-den raden shen shenya",
+		ruRU = "лейшень лейшеня лей'шень лей-шень лея ласта ласт предласт шеня ра-ден раден ра'ден радена ра",
+	},
 
 	-- Mists of Pandaria World Bosses
 	SHA_OF_ANGER = { -- Sha of Anger
@@ -1174,6 +1189,11 @@ GBB.suffixTagsLoc = langSplit(suffixTags)
 GBB.searchTagsLoc = langSplit(searchTags)
 GBB.badTagsLoc = langSplit(badTags)
 GBB.heroicTagsLoc = langSplit(heroicTags)
+local GBTags = {
+	enGB = "gb goldbid goldbit",
+	ruRU = "гб голдбит",
+}
+GBB.GBTagsLoc = langSplit(GBTags)
 GBB.Misc = (function() local t = {}; for k, _ in pairs(miscTags) do table.insert(t,k); end return t; end)()
 
 GBB.dungeonTagsLoc = dungeonTagsLoc

@@ -92,6 +92,7 @@ local SpoofedActivityIDs = {
     NALAK = 50005, -- Nalak
     OONDASTA = 50006, -- Oondasta
     ORDOS = 50007, -- Ordos
+    TOT_BOSSES = 50009, -- Throne of Thunder Bosses (Custom)
     -- FOUR_CELESTIALS = 50008, -- Four Celestials
 }
 
@@ -117,6 +118,16 @@ local spoofWorldBoss = function(name)
     }
 end
 
+local spoofRaid = function(name)
+    return {
+        name = name,
+        typeID = DungeonType.Raid,
+        expansionID = Expansions.Mists,
+        minLevel = 90,
+        maxLevel = 90,
+    }
+end
+
 --- Any info that needs to be overridden/spoofed/adjusted for a specific instances should be done here.
 --- Useful for overriding properties generated from previous expansions.
 local infoOverrides = {
@@ -138,6 +149,7 @@ local infoOverrides = {
     NALAK = spoofWorldBoss(L.NALAK),
     OONDASTA = spoofWorldBoss(L.OONDASTA),
     ORDOS = spoofWorldBoss(L.ORDOS),
+    TOT_BOSSES = spoofRaid(L.TOT_BOSSES),
     -- FOUR_CELESTIALS = spoofWorldBoss(L.FOUR_CELESTIALS),
 }
 
